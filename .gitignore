@@ -1,0 +1,12 @@
+# models
+*.pth
+*.pt
+*.json.gz
+*.bin
+*.model
+
+# etc, cache
+.DS_Store
+__pycache__/
+*.out
+*.pyc

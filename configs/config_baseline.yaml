@@ -1,0 +1,57 @@
+researcher:
+  planner: "gpt-5-mini" #gpt-5-mini
+  searcher: "gpt-5-mini"
+  writer: "gpt-5-mini"
+  reasoning_effort: "high"
+
+coder:
+  developer: "gpt-5"
+  debugger: "gpt-5"
+  reasoning_effort: "high"
+
+# General Settings
+query: null
+max_iterations: 21 #30
+checkpoint_interval: 1
+checkpoint: "ckpt"
+log_level: "INFO"
+log_dir: null
+
+workspace: examples
+problem: null
+search_time_bias: true
+max_research_reflect: 1
+max_coding_reflect: 1
+max_debug_retry: 10
+# Database Configuration
+database:
+  random_seed: null
+  db_path: null
+  in_memory: true
+  population_size: 25 # total maintained for random 25
+  archive_size: 5 # elite for exploitation 5
+  num_islands: 3 #3
+  migration_interval: 5 # 10
+  migration_rate: 0.1
+  elite_selection_ratio: 0.1
+  exploration_ratio: 0.2
+  exploitation_ratio: 0.7
+  feature_dimensions:
+    - "score"
+    - "diversity"
+    - "complexity"
+  feature_bins: 3
+  n_inspirations: 3
+
+
+hydra:
+  job_logging:
+    disable_existing_loggers: false
+  job:
+    chdir: false
+  run:
+    dir: .
+  output_subdir: null
+
+defaults:
+  - _self_

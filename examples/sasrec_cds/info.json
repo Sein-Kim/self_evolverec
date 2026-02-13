@@ -1,0 +1,13 @@
+{
+  "problem": {
+    "name": "Recommendation",
+    "description": "You are an expert ML engineer tasked with improving a sequential recommendation model's NDCG/Recall/HitRatio based on research reports, user's diagnosis and model diagnosis.\n\nHardware / Runtime Requirements:\n- GPU is REQUIRED (NVIDIA, 48 GB VRAM). Place all large tensors/models on GPU and avoid CPU-GPU ping-pong.\n- Use device handling (e.g., device = torch.device('cuda'); model.to(device); tensor.to(device)).\n\nLibraries Allowed:\n- You my use any libraires that can be imported. (Libraries List: numpy\nscipy\npandas\ntorch\ntriton\nscikit-learn\nfaiss-cpu\nnetworkx\ntransformers\ntokenizers\nsentence-transformers\nhuggingface-hub\nregex\nRapidFuzz\nmatplotlib\nshapely\nhydra-core\nomegaconf\nPyYAML\nopenai\nopenai-agents\nrequests\ntqdm\njoblib\nfilelock\nsafetensors)\n\nAcceptance Checklist:\n- Runs on a 48 GB GPU without OOM errors.",
+    "metric": "combined_score",
+    "interface": "self_evolverec_interface.py"
+  },
+  "initial_idea": {
+    "title": "Sequential Recommendation Model Enhancement",
+    "content": "Improve the recommendation model through user feedback, mathematical analysis, code analysis, and research paper analysis",
+    "supplement": "https://arxiv.org/pdf/1808.09781"
+  }
+}

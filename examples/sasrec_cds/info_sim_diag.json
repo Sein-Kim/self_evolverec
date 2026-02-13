@@ -1,0 +1,13 @@
+{
+  "problem_diagnosis": {
+    "name": "Recommendation",
+    "description": "You are an expert ML engineer tasked with designing and improving *diagnosis tools* for a sequential recommendation model.\n\nGoal:\n- Focus on build probes and metrics that analyze how the recommender behaves (e.g., embedding health, sequence sensitivity, popularity/price/genre biases, repetition, resurfacing of already-owned or disliked items).\n- Output a stable, machine-readable MODEL_DIAGNOSIS structure that other agents (researcher, coder, simulator) can use as quantitative feedback when evolving the model.\n\nHardware / Runtime Requirements:\n- The main recommender runs on a GPU (NVIDIA, 48 GB VRAM). Your probes must be lightweight enough to run periodically without causing OOM.\n- Prefer on-device computations (use the same `device` as the model), avoid unnecessary CPU–GPU ping-pong.\n\nAvailable Objects:\n- Access to the trained model (e.g., embeddings, transformers, output logits for given histories and candidate items).\n- `self.meta_data`: Item information (title, ratings, categories, price, store, etc.).\n- `self.review_data`: User reviews with ratings and text (can be used to derive genre/price/ownership or sentiment signals).\n- `self.user_train` and/or dataloaders: User histories and timestamps for building probe batches (shuffled vs. original, popular vs. niche, owned vs. not owned, etc.).\n\nDesign Requirements for Diagnosis:\n- Define clear, interpretable metrics that reflect key failure modes, for example:\n  - representation health (e.g., embedding_collapse_score),\n  - sequence sensitivity (e.g., sensitivity to order / recency),\n  - bias and failure behaviors (e.g., off-genre rate, repetition/owned resurfacing rate, popularity bias, price bias).\n- Implement each metric as a small, testable function (e.g., `def compute_sequence_sensitivity(...) -> float`) and aggregate them into a single MODEL_DIAGNOSIS dict with human-readable descriptions.\n\nAcceptance Checklist:\n- MODEL_DIAGNOSIS is a single, well-defined JSON-like dict that includes metric values and short textual definitions.\n- Metrics can be computed on a probe subset without exhausting GPU memory or excessively slowing training.\n- Metrics are interpretable enough that a researcher can directly design model changes or simulator updates based on them.\n",
+    "metric": "combined_score",
+    "interface": "self_evolverec_interface.py"
+  },
+  "initial_idea_diagnosis": {
+    "title": "Model Diagnosis Tools",
+    "content": "Improve the model diagnosis tool through mathematical analysis, code analysis, and research paper analysis",
+    "supplement": "https://arxiv.org/pdf/1808.09781"
+  }
+}
