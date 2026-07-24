@@ -161,9 +161,9 @@ def make_candidate(user_train, user_valid, user_test, num_item):
         ts = user_train['History'][ui] + user_valid['History'][ui]
         rated = set(ts)
         rated.add(0)
-        rated.add(nxt)
         nxt = user_test['History'][ui][-1]
-        negs_list = list(all_items - rated)
+        negs_list = random.sample(list(all_items - rated), 99)
+        # negs_list = list(all_items - rated)
         negs_list = [nxt] + negs_list
         candi_dict_test[ui] = negs_list
         
